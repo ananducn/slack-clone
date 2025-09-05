@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import { ENV } from "./config/env.js";
+import { connectDB } from "./config/db.js";
 
 const app = express();
 
@@ -17,4 +18,6 @@ app.listen(ENV.PORT, () => {
     ENV.PORT,
     `http://localhost:${ENV.PORT}`
   );
+
+  connectDB();
 });
