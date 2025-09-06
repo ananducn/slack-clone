@@ -1,5 +1,4 @@
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
@@ -24,7 +23,7 @@ const startServer = async () => {
   try {
     connectDB();
 
-   if (ENV.NODE_ENV === "development") {
+    if (ENV.NODE_ENV !== "development") {
       app.listen(ENV.PORT, () => {
         console.log(`Server running on port : http://localhost:${ENV.PORT}`);
       });
@@ -38,7 +37,6 @@ const startServer = async () => {
 startServer();
 
 export default app;
-
 
 //  app.listen(ENV.PORT, () => {
 //       console.log(
